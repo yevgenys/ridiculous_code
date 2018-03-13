@@ -3,9 +3,7 @@ from pprint import pprint
 
 def generate_doll(depth, user):
     res = {
-        "user": {
-            "depth": depth
-        }
+        "user": {}
     }
     u = res["user"]
     while depth > 0:
@@ -30,9 +28,8 @@ def generate_users(num):
 
 
 if __name__ == '__main__':
-    assert generate(generate_users(1)) == {'users': [{'user': {'depth': 0, 'user': {'id': 0, 'name': 'user_0'}}}]}
-    assert generate(generate_users(2)) == {'users': [{'user': {'depth': 0, 'user': {'id': 0, 'name': 'user_0'}}},
-                                                     {'user': {'depth': 1,
-                                                               'user': {'user': {'id': 1, 'name': 'user_1'}}}}]}
+    assert generate(generate_users(1)) == {'users': [{'user': {'user': {'id': 0, 'name': 'user_0'}}}]}
+    assert generate(generate_users(2)) == {'users': [{'user': {'user': {'id': 0, 'name': 'user_0'}}},
+                                                     {'user': {'user': {'user': {'id': 1, 'name': 'user_1'}}}}]}
 
     pprint(generate(generate_users(100)))
